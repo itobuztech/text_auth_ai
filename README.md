@@ -220,6 +220,7 @@ where:
 Uniformity = 1 - \frac{\sigma}{\mu}
 ```
 
+where:
 - μ = mean sentence length
 - σ = standard deviation of sentence length
 
