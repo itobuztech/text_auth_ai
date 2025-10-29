@@ -162,7 +162,9 @@ This section provides the exact metric definitions implemented in `metrics/` and
 ### 1) Perplexity (25% weight)
 
 **Definition**
-\(\displaystyle Perplexity = \exp\left(-\frac{1}{N}\sum_{i=1}^N \log P(w_i\mid context)\right)\)
+```math
+Perplexity = \exp\left(-\frac{1}{N}\sum_{i=1}^N \log P(w_i\mid context)\right)
+```
 
 **Implementation sketch**
 ```python
@@ -187,7 +189,9 @@ elif domain == Domain.SOCIAL_MEDIA:
 ### 2) Entropy (20% weight)
 
 **Shannon entropy (token level)**
-\(\;H(X) = -\sum_{i} p(x_i)\log_2 p(x_i)\)
+```math
+H(X) = -Σ p(x_i) * log₂ p(x_i)
+```
 
 **Implementation sketch**
 ```python
@@ -203,10 +207,14 @@ def calculate_text_entropy(text):
 ### 3) Structural Metric (15% weight)
 
 **Burstiness**
-\(\displaystyle Burstiness=\frac{\sigma-\mu}{\sigma+\mu}\) where \(\mu\)=mean sentence length, \(\sigma\)=std dev
+```math
+Burstiness=\frac{\sigma-\mu}{\sigma+\mu}\ where \(\mu\)=mean sentence length, \(\sigma\)=std dev
+```
 
 **Uniformity**
-\(\displaystyle Uniformity = 1 - \frac{\sigma}{\mu}\)
+```math
+Uniformity = 1 - \frac{\sigma}{\mu}\
+```
 
 **Sketch**
 ```python
@@ -223,7 +231,9 @@ def calculate_burstiness(text):
 ### 4) Semantic Analysis (15% weight)
 
 **Coherence (sentence embedding cosine similarity)**
-\(\displaystyle Coherence=\frac{1}{n}\sum_{i=1}^{n-1} \cos(e_i, e_{i+1})\)
+```math
+Coherence=\frac{1}{n}\sum_{i=1}^{n-1} \cos(e_i, e_{i+1})\
+```
 
 **Sketch**
 ```python
@@ -250,7 +260,9 @@ def calculate_linguistic_features(text, nlp_model):
 ### 6) DetectGPT (10% weight)
 
 **Stability under perturbation** (curvature principle)
-\(\displaystyle Stability = \frac{1}{n}\sum_{j} \left|\log P(x) - \log P(x_{perturbed}^j)\right|\)
+```math
+Stability = \frac{1}{n}\sum_{j} \left|\log P(x) - \log P(x_{perturbed}^j)\right|\
+```
 
 ```python
 def detect_gpt_score(text, model, num_perturbations=20):
