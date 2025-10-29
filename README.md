@@ -208,13 +208,21 @@ def calculate_text_entropy(text):
 
 **Burstiness**
 ```math
-Burstiness=\frac{\sigma-\mu}{\sigma+\mu}\ where \(\mu\)=mean sentence length, \(\sigma\)=std dev
+Burstiness = \frac{\sigma - \mu}{\sigma + \mu}
 ```
 
+where:
+- \( \mu \) = mean sentence length
+- \( \sigma \) = standard deviation of sentence length
+
 **Uniformity**
-```math
-Uniformity = 1 - \frac{\sigma}{\mu}\
+````math
+Uniformity = 1 - \frac{\sigma}{\mu}
 ```
+
+where:
+- \( \mu \) = mean sentence length
+- \( \sigma \) = standard deviation of sentence length
 
 **Sketch**
 ```python
@@ -232,7 +240,7 @@ def calculate_burstiness(text):
 
 **Coherence (sentence embedding cosine similarity)**
 ```math
-Coherence=\frac{1}{n}\sum_{i=1}^{n-1} \cos(e_i, e_{i+1})\
+Coherence = \frac{1}{n} \sum_{i=1}^{n-1} \cos(e_i, e_{i+1})
 ```
 
 **Sketch**
@@ -261,7 +269,7 @@ def calculate_linguistic_features(text, nlp_model):
 
 **Stability under perturbation** (curvature principle)
 ```math
-Stability = \frac{1}{n}\sum_{j} \left|\log P(x) - \log P(x_{perturbed}^j)\right|\
+Stability = \frac{1}{n} \sum_{j} \left| \log P(x) - \log P(x_{perturbed_j}) \right|
 ```
 
 ```python
