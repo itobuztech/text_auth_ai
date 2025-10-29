@@ -216,8 +216,8 @@ where:
 - σ = standard deviation of sentence length
 
 **Uniformity**
-````math
-Uniformity = 1 - \frac{\sigma}{\mu}
+```
+Uniformity = 1 - σ/μ
 ```
 
 where:
