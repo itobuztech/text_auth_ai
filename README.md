@@ -216,13 +216,14 @@ where:
 - σ = standard deviation of sentence length
 
 **Uniformity**
-```
-Uniformity = 1 - σ/μ
+```math
+Uniformity = 1 - \frac{\sigma}{\mu}
 ```
 
 where:
 - μ = mean sentence length
 - σ = standard deviation of sentence length
+
 
 **Sketch**
 ```python
