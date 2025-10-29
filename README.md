@@ -212,17 +212,16 @@ Burstiness = \frac{\sigma - \mu}{\sigma + \mu}
 ```
 
 where:
-- \( \mu \) = mean sentence length
-- \( \sigma \) = standard deviation of sentence length
+- μ = mean sentence length
+- σ = standard deviation of sentence length
 
 **Uniformity**
 ````math
 Uniformity = 1 - \frac{\sigma}{\mu}
 ```
 
-where:
-- \( \mu \) = mean sentence length
-- \( \sigma \) = standard deviation of sentence length
+- μ = mean sentence length
+- σ = standard deviation of sentence length
 
 **Sketch**
 ```python
