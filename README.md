@@ -61,12 +61,50 @@ This README is research‑grade (detailed math, methodology, and benchmarks) whi
 
 | Feature | Description | Impact |
 |---|---:|---|
-| **Domain‑Aware Detection** | Per‑domain thresholding and weight tuning (academic, technical, creative, social) | ↑15–20% accuracy vs generic detectors |
+| **Domain‑Aware Detection** | Calibrated thresholds and metric weights for 16 content types (Academic, Technical, Creative, Social Media, etc.) | ↑15–20% accuracy vs generic detectors |
 | **6‑Metric Ensemble** | Orthogonal signals across statistical, syntactic and semantic dimensions | Low false positives (≈2–3%) |
 | **Explainability** | Sentence‑level scoring, highlights, and human‑readable reasoning | Trust & auditability |
 | **Model Attribution** | Likely model identification (GPT‑4, Claude, Gemini, LLaMA, etc.) | Forensic insights |
 | **Auto Model Fetch** | First‑run download from Hugging Face, local cache, offline fallback | Lightweight repo & reproducible runs |
 | **Extensible Design** | Plug‑in metrics, model registry, and retraining pipeline hooks | Easy research iteration |
+
+### 📊 Supported Domains & Threshold Configuration
+
+The platform supports detection tailored to the following 16 domains, each with specific AI/Human probability thresholds and metric weights defined in `config/threshold_config.py`. These configurations are used by the ensemble classifier to adapt its decision-making process.
+
+**Domains:**
+
+*   `general` (Default fallback)
+*   `academic`
+*   `creative`
+*   `ai_ml`
+*   `software_dev`
+*   `technical_doc`
+*   `engineering`
+*   `science`
+*   `business`
+*   `legal`
+*   `medical`
+*   `journalism`
+*   `marketing`
+*   `social_media`
+*   `blog_personal`
+*   `tutorial`
+
+**Threshold Configuration Details (`config/threshold_config.py`):**
+
+Each domain is configured with specific thresholds for the six detection metrics and an ensemble threshold. The weights determine the relative importance of each metric's output during the ensemble aggregation phase.
+
+*   **AI Threshold:** If a metric's AI probability exceeds this value, it leans towards an "AI" classification for that metric.
+*   **Human Threshold:** If a metric's AI probability falls below this value, it leans towards a "Human" classification for that metric.
+*   **Weight:** The relative weight assigned to the metric's result during ensemble combination (normalized internally to sum to 1.0 for active metrics).
+
+### Confidence-Calibrated Aggregation (High Level)
+
+1.  Start with domain-specific base weights (defined in `config/threshold_config.py`).
+2.  Adjust these weights dynamically based on each metric's individual confidence score using a scaling function.
+3.  Normalize the adjusted weights.
+4.  Compute the final weighted aggregate probability.
 
 ---
 
