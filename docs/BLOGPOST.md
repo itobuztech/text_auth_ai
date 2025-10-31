@@ -44,8 +44,8 @@ Rather than betting everything on one metric, we designed a system that analyzes
 
 **The mathematics**: Perplexity is calculated as the exponential of the average negative log-probability of each word given its context:
 
-```
-Perplexity = exp(-1/N × Σ log P(wᵢ | context))
+```math
+Perplexity = \exp\left(-\frac{1}{N}\sum_{i=1}^N \log P(w_i\mid context)\right)
 ```
 
 where N is the number of tokens, and P(wᵢ | context) is the probability the model assigns to word i given the preceding words.
@@ -60,8 +60,8 @@ where N is the number of tokens, and P(wᵢ | context) is the probability the mo
 
 **The mathematics**: We use Shannon entropy across the token distribution:
 
-```
-H(X) = -Σ p(xᵢ) × log₂ p(xᵢ)
+```math
+H(X) = -Σ p(x_i) * log₂ p(x_i)
 ```
 
 where p(xᵢ) is the probability of token i appearing in the text.
@@ -77,16 +77,22 @@ where p(xᵢ) is the probability of token i appearing in the text.
 **The mathematics**: We calculate two complementary metrics:
 
 **Burstiness** measures the relationship between variability and central tendency:
+```math
+Burstiness = \frac{\sigma - \mu}{\sigma + \mu}
 ```
-Burstiness = (σ - μ) / (σ + μ)
-```
+where:
+- μ = mean sentence length
+- σ = standard deviation of sentence length
 
 **Uniformity** captures how consistent sentence lengths are:
-```
-Uniformity = 1 - (σ / μ)
+```math
+Uniformity = 1 - \frac{\sigma}{\mu}
 ```
 
-where μ is mean sentence length and σ is standard deviation.
+where:
+- μ = mean sentence length
+- σ = standard deviation of sentence length
+
 
 **Why it matters**: Human writing exhibits natural "burstiness"—some short, punchy sentences followed by longer, complex ones. This creates rhythm and emphasis. AI writing tends toward consistent medium-length sentences, creating an almost metronome-like uniformity.
 
@@ -98,8 +104,8 @@ where μ is mean sentence length and σ is standard deviation.
 
 **The mathematics**: Using sentence embeddings, we calculate cosine similarity between adjacent sentences:
 
-```
-Coherence = 1/n × Σ cos(eᵢ, eᵢ₊₁)
+```math
+Coherence = \frac{1}{n} \sum_{i=1}^{n-1} \cos(e_i, e_{i+1})
 ```
 
 where eᵢ represents the embedding vector for sentence i.
@@ -124,8 +130,8 @@ where eᵢ represents the embedding vector for sentence i.
 
 **The mathematics**: We generate multiple perturbed versions and measure deviation:
 
-```
-Stability = 1/n × Σ |log P(x) - log P(x_perturbed_j)|
+```math
+Stability = \frac{1}{n} \sum_{j} \left| \log P(x) - \log P(x_{perturbed_j}) \right|
 ```
 
 **The insight**: This metric is based on cutting-edge research (DetectGPT). AI-generated text exhibits characteristic "curvature" in probability space. Because it originated from a model's probability distribution, small changes cause predictable shifts in likelihood. Human text behaves differently—it wasn't generated from this distribution, so perturbations show different patterns.
@@ -294,17 +300,17 @@ For production deployments, we pre-bake models into Docker images to avoid cold-
 
 While the technology is fascinating, a system is only valuable if it solves real problems for real users. The market validation is compelling:
 
-**Education sector** ($12B market):
+**Education sector** :
 - Universities need academic integrity tools that are defensible in appeals
 - False accusations destroy student trust—accuracy matters more than speed
 - Need for integration with learning management systems (Canvas, Blackboard, Moodle)
 
-**Hiring platforms** ($5B market):
+**Hiring platforms** :
 - Resume screening at scale requires automated first-pass filtering
 - Cover letter authenticity affects candidate quality downstream
 - Integration with applicant tracking systems (Greenhouse, Lever, Workday)
 
-**Content publishing** ($3B market):
+**Content publishing** :
 - Publishers drowning in AI-generated submissions
 - SEO platforms fighting content farms
 - Media credibility depends on content authenticity
@@ -388,10 +394,5 @@ As AI writing tools become ubiquitous, the question isn't "Can we detect them?"�
 *The AI Text Authentication Platform is available on GitHub. Technical documentation, whitepapers, and research methodology are available in the repository. For enterprise inquiries or research collaborations, contact the team.*
 
 **Version 1.0.0 | October 2025**
-
----
-
-## Author: 
-Satyaki Mitra — Data Scientist
 
 ---
