@@ -1245,17 +1245,6 @@ async def log_requests(request: Request, call_next):
     return response
 
 
-
-# ==================== RAILWAY DEPLOYMENT SUPPORT ====================
-import os
-# Override settings for Railway deployment
-if os.environ.get("RAILWAY_ENVIRONMENT"):
-    settings.HOST  = os.getenv("HOST", "0.0.0.0")
-    settings.PORT  = int(os.getenv("PORT", "8000"))
-    settings.DEBUG = False
-    logger.info(f"Railway deployment detected - Using host: {settings.HOST}, port: {settings.PORT}")
-
-
 # ==================== MAIN ====================
 if __name__ == "__main__":
     # Configure logging
