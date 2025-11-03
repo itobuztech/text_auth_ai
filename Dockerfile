@@ -21,7 +21,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 
 # Create necessary directories
-RUN mkdir -p /tmp/huggingface /tmp/transformers /tmp/datasets /app/data/reports /app/data/uploads
+RUN mkdir -p /tmp/huggingface /tmp/transformers /tmp/datasets /app/data/reports /app/data/uploads /app/models/cache /app/logs
 
 # Copy requirements first for better caching
 COPY requirements.txt .
@@ -31,6 +31,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY . .
+
+# Clear any incompatible cached models
+RUN rm -rf /tmp/huggingface/* /tmp/transformers/* /app/models/cache/*
 
 # Expose port 7860 (hugging Face Spaces Standard)
 EXPOSE 7860
