@@ -1,8 +1,8 @@
 # Core Framework
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
-pydantic==2.5.0
-pydantic-settings==2.1.0
+pydantic
+pydantic-settings
 python-multipart==0.0.6
 
 # Machine Learning & Transformers
@@ -10,6 +10,7 @@ torch==2.1.0
 transformers==4.35.2
 sentence-transformers==2.2.2
 tokenizers==0.15.0
+huggingface-hub==0.20.1  
 
 # NLP Libraries
 spacy==3.7.2
@@ -32,7 +33,7 @@ python-magic==0.4.27
 # Language Detection
 langdetect==1.0.9
 
-# Visualization & Reporting (Light versions)
+# Visualization & Reporting
 matplotlib==3.8.2
 seaborn==0.13.0
 reportlab==4.0.7
@@ -45,7 +46,6 @@ tenacity==8.2.3
 
 # Logging & Monitoring
 loguru==0.7.2
-python-json-logger==2.0.7
 
 # Caching
 diskcache==5.6.3
