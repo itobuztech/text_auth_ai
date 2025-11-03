@@ -1,3 +1,15 @@
+---
+title: Text Authentication Platform
+emoji: 🔍
+colorFrom: blue
+colorTo: purple
+sdk: docker
+sdk_version: "4.36.0"
+app_file: text_auth_app.py
+pinned: false
+license: mit
+---
+
 <div align="center">
 
 # 🔍 AI Text Authentication Platform
