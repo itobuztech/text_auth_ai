@@ -10,7 +10,7 @@ torch==2.1.0
 transformers==4.35.2
 sentence-transformers==2.2.2
 tokenizers==0.15.0
-huggingface-hub==0.20.1  
+huggingface-hub<0.26.0 
 
 # NLP Libraries
 spacy==3.7.2

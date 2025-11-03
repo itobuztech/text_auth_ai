@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/itobuztech/text_auth_ai.git .
 
 # Install requirements
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir
 
 # Create folders
 RUN mkdir -p logs data/uploads data/reports models/cache
